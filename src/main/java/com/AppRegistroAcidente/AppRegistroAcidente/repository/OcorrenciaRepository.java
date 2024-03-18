@@ -1,9 +1,9 @@
 package com.AppRegistroAcidente.AppRegistroAcidente.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.AppRegistroAcidente.AppRegistroAcidente.models.Ocorrencia;
 
-public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Long> {
+public interface OcorrenciaRepository extends CrudRepository<Ocorrencia, Long> {
 
 }

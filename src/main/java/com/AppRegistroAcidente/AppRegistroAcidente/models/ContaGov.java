@@ -23,8 +23,7 @@ public class ContaGov {
     private String usuario;
 	
 	@NotNull
-    @Size(min = 6, max = 12, message = "A senha deve ter entre 6 e 12 caracteres, "
-    + "incluindo letras maiúsculas e minúsculas, números e caracteres especiais.")
+    @Size(max = 15)
 	private String senha;
     
     
@@ -61,6 +60,7 @@ public class ContaGov {
 	}
     
 	@OneToOne(mappedBy = "contaGov")
-	private Cidadao cidadao; // Esta é a propriedade ausente
+	private Cidadao cidadao;
+
 
 }

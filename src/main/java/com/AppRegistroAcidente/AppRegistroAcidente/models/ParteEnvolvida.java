@@ -106,14 +106,4 @@ public class ParteEnvolvida {
 		this.ocorrencia = ocorrencia;
 	}
 
-
-
-		public void confirmarOcorrencia(String codigoConfirmacao) {
-	        if (this.ocorrencia.getCodigoConfirmacao().equals(codigoConfirmacao)) {
-	            this.ocorrencia.setStatusConfirmacao("confirmado");
-	        } else {
-	            throw new IllegalArgumentException("Código de confirmação inválido.");
-	        }
-	    }
-
 }

@@ -1,5 +1,7 @@
 package com.AppRegistroAcidente.AppRegistroAcidente.models;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 
 import jakarta.persistence.Column;
@@ -7,12 +9,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Size;
 
 
 @Entity
-public class Cidadao {
+public class Cidadao implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,7 +130,10 @@ public class Cidadao {
 
 
 	@OneToOne
-    private ContaGov contaGov;
+	@JoinColumn(name = "conta_gov_id")
+	private ContaGov contaGov;
+
+
 	
 	
 

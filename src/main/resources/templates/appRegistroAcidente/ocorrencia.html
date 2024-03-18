@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>AppRegistroAcidente</title>
+</head>
+<body>
+
+<h1>Registro de ocorrência</h1>
+<form method="post" th:action="@{/ocorrencia}">
+    <input type="hidden" th:value="${cidadaoId}" name="cidadaoId"/>
+    Data: <input type="text" value="" name="dataHora"/>
+    Localização: <input type="text" value="" name="localizacao"/>
+    Descrição: <input type="text" value="" name="descricao"/>
+    Fotos: <input type="text" value="" name="fotos"/>
+    Situação: <input type="text" value="" name="situacao"/>
+
+    <button type="submit">Salvar</button>
+</form>
+
+</body>
+</html>

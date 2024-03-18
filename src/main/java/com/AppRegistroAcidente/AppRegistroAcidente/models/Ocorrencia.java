@@ -9,9 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -41,22 +42,11 @@ public class Ocorrencia {
 	@Size(max = 15)
     private String situacao;
     
-    @NotNull
-    @Lob
-    private byte[] boletimOcorrencia;
-    
-    @NotNull
-	@Size(max = 15)
-    private String codigoConfirmacao; // Novo atributo
-    
-    @NotNull
-	@Size(max = 15)
-    private String statusConfirmacao; // Novo atributo
-    
     @OneToMany(mappedBy = "ocorrencia")
     private List<ParteEnvolvida> partesEnvolvidas;
     
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
 
     // Getters e Setters
@@ -108,30 +98,6 @@ public class Ocorrencia {
 	public void setFotos(byte[] fotos) {
 		this.fotos = fotos;
 	}
-
-	public byte[] getBoletimOcorrencia() {
-		return boletimOcorrencia;
-	}
-
-	public void setBoletimOcorrencia(byte[] boletimOcorrencia) {
-		this.boletimOcorrencia = boletimOcorrencia;
-	}
-
-	public String getCodigoConfirmacao() {
-        return codigoConfirmacao;
-    }
-
-    public void setCodigoConfirmacao(String codigoConfirmacao) {
-        this.codigoConfirmacao = codigoConfirmacao;
-    }
-
-    public String getStatusConfirmacao() {
-        return statusConfirmacao;
-    }
-
-    public void setStatusConfirmacao(String statusConfirmacao) {
-        this.statusConfirmacao = statusConfirmacao;
-    }
 
     public List<ParteEnvolvida> getPartesEnvolvidas() {
         return partesEnvolvidas;
