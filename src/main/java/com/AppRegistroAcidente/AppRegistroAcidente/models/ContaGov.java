@@ -61,6 +61,8 @@ public class ContaGov {
     
 	@OneToOne(mappedBy = "contaGov")
 	private Cidadao cidadao;
+	
+	
 
 
 }
