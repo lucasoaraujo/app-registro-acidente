@@ -7,12 +7,12 @@
 
 <h1>Registro de ocorrência</h1>
 <form method="post" th:action="@{/ocorrencia}">
-    <input type="hidden" th:value="${cidadaoId}" name="cidadaoId"/>
-    Data: <input type="text" value="" name="dataHora"/>
-    Localização: <input type="text" value="" name="localizacao"/>
-    Descrição: <input type="text" value="" name="descricao"/>
-    Fotos: <input type="text" value="" name="fotos"/>
-    Situação: <input type="text" value="" name="situacao"/>
+    <input type="hidden" name="cidadaoId" th:value="${cidadaoId}"/> <!-- Removido o prefixo "th:" do atributo "name" -->
+    Data: <input type="text" th:value="${dataHora}" name="dataHora"/>
+    Localização: <input type="text" th:value="${localizacao}" name="localizacao"/>
+    Descrição: <input type="text" th:value="${descricao}" name="descricao"/>
+    Fotos: <input type="text" th:value="${fotos}" name="fotos"/>
+    Situação: <input type="text" th:value="${situacao}" name="situacao"/>
 
     <button type="submit">Salvar</button>
 </form>

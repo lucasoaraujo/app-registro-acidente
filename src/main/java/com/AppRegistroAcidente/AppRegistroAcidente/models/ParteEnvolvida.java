@@ -105,5 +105,16 @@ public class ParteEnvolvida {
 	public void setOcorrencia(Ocorrencia ocorrencia) {
 		this.ocorrencia = ocorrencia;
 	}
+	
+	@ManyToOne
+	private Cidadao cidadao;
+
+	public Cidadao getCidadao() {
+	    return cidadao;
+	}
+
+	public void setCidadao(Cidadao cidadao) {
+	    this.cidadao = cidadao;
+	}
 
 }

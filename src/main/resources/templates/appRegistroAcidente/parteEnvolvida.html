@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>AppRegistroAcidente</title>
+</head>
+<body>
+
+<h1>Registro de Parte Envolvida</h1>
+<form method="post" th:action="@{/parteEnvolvida}">
+    <input type="hidden" th:value="${cidadaoId}" name="cidadaoId"/>
+    Nome: <input type="text" value="" name="nome"/>
+    CPF: <input type="text" value="" name="cpf"/>
+
+    <button type="submit">Salvar</button>
+</form>
+
+</body>
+</html>

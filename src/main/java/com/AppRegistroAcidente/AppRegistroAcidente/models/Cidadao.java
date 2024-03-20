@@ -127,7 +127,8 @@ public class Cidadao implements Serializable{
 		this.contaGov = contaGov;
 	}
 
-
+	@OneToOne(mappedBy = "cidadao")
+	private Ocorrencia ocorrencia;
 
 	@OneToOne
 	@JoinColumn(name = "conta_gov_id")

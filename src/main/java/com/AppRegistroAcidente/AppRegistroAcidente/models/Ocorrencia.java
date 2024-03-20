@@ -11,8 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -36,7 +36,7 @@ public class Ocorrencia {
     
     @NotNull
     @Lob
-    private byte[] fotos;
+    private String[] fotos;
     
     @NotNull
 	@Size(max = 15)
@@ -45,65 +45,65 @@ public class Ocorrencia {
     @OneToMany(mappedBy = "ocorrencia")
     private List<ParteEnvolvida> partesEnvolvidas;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
 
-    // Getters e Setters
+    
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(String dataHora) {
-        this.dataHora = dataHora;
-    }
-
-    public String getLocalizacao() {
-        return localizacao;
-    }
-
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public byte[] getFotos() {
-		return fotos;
-	}
-
-	public void setFotos(byte[] fotos) {
-		this.fotos = fotos;
-	}
-
-    public List<ParteEnvolvida> getPartesEnvolvidas() {
+	public List<ParteEnvolvida> getPartesEnvolvidas() {
         return partesEnvolvidas;
     }
 
-    public void setPartesEnvolvidas(List<ParteEnvolvida> partesEnvolvidas) {
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(String dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String[] getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(String[] fotos) {
+		this.fotos = fotos;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+
+	public void setPartesEnvolvidas(List<ParteEnvolvida> partesEnvolvidas) {
         this.partesEnvolvidas = partesEnvolvidas;
     }
 
