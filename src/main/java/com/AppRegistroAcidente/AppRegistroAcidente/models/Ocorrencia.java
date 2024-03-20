@@ -36,7 +36,7 @@ public class Ocorrencia {
     
     @NotNull
     @Lob
-    private String[] fotos;
+    private String fotos;
     
     @NotNull
 	@Size(max = 15)
@@ -87,11 +87,11 @@ public class Ocorrencia {
 		this.descricao = descricao;
 	}
 
-	public String[] getFotos() {
+	public String getFotos() {
 		return fotos;
 	}
 
-	public void setFotos(String[] fotos) {
+	public void setFotos(String fotos) {
 		this.fotos = fotos;
 	}
 

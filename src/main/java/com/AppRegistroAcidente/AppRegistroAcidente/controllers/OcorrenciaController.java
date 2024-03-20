@@ -33,7 +33,7 @@ public class OcorrenciaController {
         @RequestParam("dataHora") String dataHora,
         @RequestParam("localizacao") String localizacao,
         @RequestParam("descricao") String descricao,
-        @RequestParam("fotos") String[] fotos, // Corrigido para String[] fotos
+        @RequestParam("fotos") String fotos, // Corrigido para String[] fotos
         @RequestParam("situacao") String situacao,
         RedirectAttributes redirectAttributes,
         @RequestParam(name = "cidadaoId", required = false) Long cidadaoId // Adicionado parâmetro cidadaoId como opcional
