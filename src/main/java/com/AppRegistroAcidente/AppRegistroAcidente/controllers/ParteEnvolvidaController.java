@@ -16,7 +16,7 @@ import com.AppRegistroAcidente.AppRegistroAcidente.repository.ParteEnvolvidaRepo
 @Controller
 public class ParteEnvolvidaController {
 
-    /*@Autowired
+    @Autowired
     private ParteEnvolvidaRepository parteEnvolvidaRepository;
 
     @Autowired
@@ -24,27 +24,36 @@ public class ParteEnvolvidaController {
 
     @RequestMapping(value = "/parteenvolvida", method = RequestMethod.GET)
     public String showParteEnvolvidaForm(Model model) {
-        model.addAttribute("parteEnvolvida", new ParteEnvolvida());
+        model.addAttribute("parteenvolvida", new ParteEnvolvida());
         return "appRegistroAcidente/parteenvolvida";
     }
 
     @RequestMapping(value = "/parteenvolvida", method = RequestMethod.POST)
-    public String saveParteEnvolvida(@RequestParam("cidadaoId") Long cidadaoId, ParteEnvolvida parteEnvolvida,
-            RedirectAttributes redirectAttributes) {
-        // Buscar o cidadão correspondente ao ID
-        Cidadao cidadao = cidadaoRepository.findById(cidadaoId).orElse(null);
+    public String saveParteEnvolvida(
+        @RequestParam("nome") String nome,
+        @RequestParam("cpf") String cpf,
+        @RequestParam("tipoParticipacao") String tipoParticipacao, // Corrigido para "tipoParticipacao"
+        RedirectAttributes redirectAttributes,
+        @RequestParam(name = "cidadaoId", required = false) Long cidadaoId
+    ) {
+    		ParteEnvolvida parteEnvolvida = new ParteEnvolvida();
+    		parteEnvolvida.setNome(nome);
+    		parteEnvolvida.setCpf(cpf);
+    		parteEnvolvida.setTipoParticipacao(tipoParticipacao);
+    		
+    		 if (cidadaoId != null) {
+    	            Cidadao cidadao = cidadaoRepository.findById(cidadaoId).orElse(null);
+    	            if (cidadao != null) {
+    	                parteEnvolvida.setCidadao(cidadao);
+    	            } else {
+    	                redirectAttributes.addFlashAttribute("errorMessage", "Cidadão não encontrado.");
+    	                return "redirect:/parteenvolvida";
+    	            }
+    	        }
 
-        if (cidadao != null) {
-            // Associar a parte envolvida ao cidadão
-            parteEnvolvida.setCidadao(cidadao);
-            // Salvar a parte envolvida
-            parteEnvolvidaRepository.save(parteEnvolvida);
-            redirectAttributes.addFlashAttribute("successMessage", "Parte envolvida salva com sucesso!");
-        } else {
-            // Lidar com o cenário em que o cidadão não é encontrado
-            redirectAttributes.addFlashAttribute("errorMessage", "Cidadão não encontrado.");
-        }
-
-        return "redirect:/selecao"; // Redirecionar de volta para a página de seleção
-    }*/
-}
+    	        parteEnvolvidaRepository.save(parteEnvolvida);
+    	        return "redirect:/parteenvolvida";
+    	    }
+    	}
+    		
+       

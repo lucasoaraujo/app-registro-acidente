@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title>AppRegistroAcidente</title>
+    <title>Cadastro de Parte Envolvida</title>
 </head>
 <body>
 
-<h1>Registro de Parte Envolvida</h1>
-<form method="post" th:action="@{/parteEnvolvida}">
-    <input type="hidden" th:value="${cidadaoId}" name="cidadaoId"/>
-    Nome: <input type="text" value="" name="nome"/>
-    CPF: <input type="text" value="" name="cpf"/>
+<h1>Cadastro de Parte Envolvida</h1>
+<form method="post" th:action="@{/parteenvolvida}">
+    <input type="hidden" name="cidadaoId" th:value="${cidadaoId}"/> <!-- Removido o prefixo "th:" do atributo "name" -->
+    Nome: <input type="text" name="nome" required/>
+    CPF: <input type="text" name="cpf" required/>
+    Tipo de Participação: <input type="text" name="tipoParticipacao" required/>
 
     <button type="submit">Salvar</button>
 </form>
