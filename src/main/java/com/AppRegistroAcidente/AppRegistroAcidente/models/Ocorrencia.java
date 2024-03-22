@@ -48,7 +48,9 @@ public class Ocorrencia {
     @ManyToOne
     @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
-
+    
+    @OneToMany(mappedBy = "ocorrencia")
+    private List<Veiculo> veiculos;
     
 
 	public List<ParteEnvolvida> getPartesEnvolvidas() {
@@ -114,4 +116,6 @@ public class Ocorrencia {
     public void setCidadao(Cidadao cidadao) {
         this.cidadao = cidadao;
     }
+
+
 }

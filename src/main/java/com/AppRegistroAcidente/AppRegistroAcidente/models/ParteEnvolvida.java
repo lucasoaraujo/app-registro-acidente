@@ -1,14 +1,10 @@
 package com.AppRegistroAcidente.AppRegistroAcidente.models;
 
-import javax.validation.constraints.NotNull;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class ParteEnvolvida {
@@ -16,16 +12,6 @@ public class ParteEnvolvida {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
-	 
-	 @NotNull
-     @Size(max = 50)
-	 private String nome;
-	 
-	 
-	 @Column(unique = true)
-	 @NotNull
-	 @Size(max = 14) 
-	 private String cpf;
 	    
 	 @ManyToOne
 	 private Veiculo veiculo;
@@ -44,30 +30,6 @@ public class ParteEnvolvida {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public String getCpf() {
-		return cpf;
-	}
-
-
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 

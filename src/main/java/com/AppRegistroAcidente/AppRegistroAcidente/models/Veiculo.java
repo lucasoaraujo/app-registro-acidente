@@ -7,7 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Veiculo {
@@ -18,20 +19,16 @@ public class Veiculo {
 	
 	@Column(unique = true)
     @NotNull
-    @Size(max = 8)
     private String placa;
 	
 	@NotNull
-    @Size(max = 15)
     private String modelo;
     
 	@NotNull
-    @Size(max = 15)
     private String marca;
     
     @Column(unique = true)
     @NotNull
-    @Size(max = 15)
     private String renavam;
 
 	public Long getId() {
@@ -74,5 +71,9 @@ public class Veiculo {
 		this.renavam = renavam;
 	}
 
+	@ManyToOne
+    @JoinColumn(name = "ocorrencia_id")
+    private Ocorrencia ocorrencia;
+	
     
 }

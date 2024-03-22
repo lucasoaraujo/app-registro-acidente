@@ -8,9 +8,13 @@
 <h1>Cadastro de Parte Envolvida</h1>
 <form method="post" th:action="@{/parteenvolvida}">
     <input type="hidden" name="cidadaoId" th:value="${cidadaoId}"/> <!-- Removido o prefixo "th:" do atributo "name" -->
-    Nome: <input type="text" name="nome" required/>
-    CPF: <input type="text" name="cpf" required/>
     Tipo de Participação: <input type="text" name="tipoParticipacao" required/>
+    
+    <!-- Campos do Veículo -->
+    Placa: <input type="text" name="veiculo.placa" required/>
+    Modelo: <input type="text" name="veiculo.modelo" required/>
+    Marca: <input type="text" name="veiculo.marca" required/>
+    Renavam: <input type="text" name="veiculo.renavam" required/>
 
     <button type="submit">Salvar</button>
 </form>
