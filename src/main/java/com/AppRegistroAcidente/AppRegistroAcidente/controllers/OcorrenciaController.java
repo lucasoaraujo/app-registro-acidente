@@ -34,12 +34,14 @@ public class OcorrenciaController {
     @RequestMapping(value="/ocorrencia", method=RequestMethod.GET)
     public String form(Model model) {
         model.addAttribute("ocorrencia", new Ocorrencia());
+        model.addAttribute("cidadao", new Cidadao()); // Adicionando um novo Cidadao ao model
         return "appRegistroAcidente/ocorrencia";
     }
 
     @RequestMapping(value="/ocorrencia", method=RequestMethod.POST)
     public String processOcorrencia(
             @Valid @ModelAttribute("ocorrencia") Ocorrencia ocorrencia,
+            @Valid @ModelAttribute("cidadao") Cidadao cidadao, // Recebendo um Cidadao no método
             BindingResult result,
             @RequestParam("placa") String placa,
             @RequestParam("modelo") String modelo,
@@ -59,15 +61,9 @@ public class OcorrenciaController {
 
         veiculoRepository.save(veiculo);
 
-        Cidadao cidadao = ocorrencia.getCidadao();
-        if (cidadao != null) {
-            cidadao = cidadaoRepository.findById(cidadao.getId()).orElse(null);
-            if (cidadao == null) {
-                redirectAttributes.addFlashAttribute("errorMessage", "Cidadão não encontrado.");
-                return "redirect:/ocorrencia";
-            }
-            ocorrencia.setCidadao(cidadao);
-        }
+        // Salvando o Cidadao antes de associá-lo à Ocorrencia
+        Cidadao savedCidadao = cidadaoRepository.save(cidadao);
+        ocorrencia.setCidadao(savedCidadao);
 
         ocorrenciaRepository.save(ocorrencia);
         return "redirect:/ocorrencia";

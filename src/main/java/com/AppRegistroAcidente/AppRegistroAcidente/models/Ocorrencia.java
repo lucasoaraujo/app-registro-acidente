@@ -1,6 +1,6 @@
+package com.AppRegistroAcidente.AppRegistroAcidente.models;
 
-   package com.AppRegistroAcidente.AppRegistroAcidente.models;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -11,8 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -45,12 +45,12 @@ public class Ocorrencia {
     @OneToMany(mappedBy = "ocorrencia")
     private List<ParteEnvolvida> partesEnvolvidas;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
     
     @OneToMany(mappedBy = "ocorrencia")
-    private List<Veiculo> veiculos;
+    private List<Veiculo> veiculos = new ArrayList<>(); // Inicialize a lista aqui
     
 
 	public List<ParteEnvolvida> getPartesEnvolvidas() {
@@ -116,6 +116,14 @@ public class Ocorrencia {
     public void setCidadao(Cidadao cidadao) {
         this.cidadao = cidadao;
     }
+    
+ // Método para retornar a lista de veículos associados à ocorrência
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    
+    
 
 
 }

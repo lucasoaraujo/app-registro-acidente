@@ -75,5 +75,15 @@ public class Veiculo {
     @JoinColumn(name = "ocorrencia_id")
     private Ocorrencia ocorrencia;
 	
-    
+	 // Métodos Getter e Setter para o atributo Ocorrencia
+    public Ocorrencia getOcorrencia() {
+        return ocorrencia;
+    }
+
+    public void setOcorrencia(Ocorrencia ocorrencia) {
+        this.ocorrencia = ocorrencia;
+        if (ocorrencia != null) {
+            ocorrencia.getVeiculos().add(this);
+        }
+    }
 }
