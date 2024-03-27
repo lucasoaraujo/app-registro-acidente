@@ -1,5 +1,7 @@
 package com.AppRegistroAcidente.AppRegistroAcidente.models;
 
+import java.util.ArrayList;
+
 import javax.validation.constraints.NotNull;
 
 import jakarta.persistence.Column;
@@ -30,6 +32,25 @@ public class Veiculo {
     @Column(unique = true)
     @NotNull
     private String renavam;
+
+	@ManyToOne
+	@JoinColumn(name = "ocorrencia_id")
+	private Ocorrencia ocorrencia;
+	
+	// Métodos Getter e Setter para o atributo Ocorrencia
+    public Ocorrencia getOcorrencia() {
+        return ocorrencia;
+    }
+
+    public void setOcorrencia(Ocorrencia ocorrencia) {
+        this.ocorrencia = ocorrencia;
+        if (ocorrencia != null) {
+            if (ocorrencia.getVeiculos() == null) {
+                ocorrencia.setVeiculos(new ArrayList<>());
+            }
+            ocorrencia.getVeiculos().add(this);
+        }
+    }
 
 	public Long getId() {
 		return id;
@@ -70,20 +91,7 @@ public class Veiculo {
 	public void setRenavam(String renavam) {
 		this.renavam = renavam;
 	}
-
-	@ManyToOne
-    @JoinColumn(name = "ocorrencia_id")
-    private Ocorrencia ocorrencia;
 	
-	 // Métodos Getter e Setter para o atributo Ocorrencia
-    public Ocorrencia getOcorrencia() {
-        return ocorrencia;
-    }
-
-    public void setOcorrencia(Ocorrencia ocorrencia) {
-        this.ocorrencia = ocorrencia;
-        if (ocorrencia != null) {
-            ocorrencia.getVeiculos().add(this);
-        }
-    }
+	
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,15 +24,15 @@ public class Ocorrencia {
     private Long id;
     
     @NotNull
-	@Size(max = 10)
+    @Size(max = 10)
     private String dataHora;
     
     @NotNull
-	@Size(max = 15)
+    @Size(max = 15)
     private String localizacao;
     
     @NotNull
-	@Lob
+    @Lob
     private String descricao;
     
     @NotNull
@@ -39,7 +40,7 @@ public class Ocorrencia {
     private String fotos;
     
     @NotNull
-	@Size(max = 15)
+    @Size(max = 15)
     private String situacao;
     
     @OneToMany(mappedBy = "ocorrencia")
@@ -49,63 +50,62 @@ public class Ocorrencia {
     @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
     
-    @OneToMany(mappedBy = "ocorrencia")
-    private List<Veiculo> veiculos = new ArrayList<>(); // Inicialize a lista aqui
-    
+    @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL)
+    private List<Veiculo> veiculos;
 
-	public List<ParteEnvolvida> getPartesEnvolvidas() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(String dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(String fotos) {
+        this.fotos = fotos;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public List<ParteEnvolvida> getPartesEnvolvidas() {
         return partesEnvolvidas;
     }
 
-    public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(String dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public String getLocalizacao() {
-		return localizacao;
-	}
-
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getFotos() {
-		return fotos;
-	}
-
-	public void setFotos(String fotos) {
-		this.fotos = fotos;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
-
-	public void setPartesEnvolvidas(List<ParteEnvolvida> partesEnvolvidas) {
+    public void setPartesEnvolvidas(List<ParteEnvolvida> partesEnvolvidas) {
         this.partesEnvolvidas = partesEnvolvidas;
     }
 
@@ -116,14 +116,20 @@ public class Ocorrencia {
     public void setCidadao(Cidadao cidadao) {
         this.cidadao = cidadao;
     }
-    
- // Método para retornar a lista de veículos associados à ocorrência
+
     public List<Veiculo> getVeiculos() {
+        if (veiculos == null) {
+            veiculos = new ArrayList<>();
+        }
         return veiculos;
     }
 
-    
-    
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
 
-
+	public void setVeiculo(Veiculo veiculo) {
+		// TODO Auto-generated method stub
+		
+	}
 }

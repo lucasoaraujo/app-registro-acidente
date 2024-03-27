@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -128,7 +127,7 @@ public class Cidadao implements Serializable{
 		this.contaGov = contaGov;
 	}
 
-	@OneToOne(mappedBy = "cidadao", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "cidadao")
 	private Ocorrencia ocorrencia;
 
 	@OneToOne

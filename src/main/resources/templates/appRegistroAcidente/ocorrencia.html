@@ -2,26 +2,112 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <title>AppRegistroAcidente</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f0f0f0; /* Cor de fundo para a página */
+            font-family: Arial, sans-serif; /* Fonte principal */
+        }
+        .container {
+            margin-top: 50px; /* Espaçamento do topo */
+            text-align: center; /* Centralizar texto */
+        }
+        h1 {
+            color: #333; /* Cor do título */
+        }
+        .form-container {
+            background-color: #fff; /* Cor de fundo do contêiner */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 5px; /* Borda arredondada */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+            max-width: 400px; /* Largura máxima */
+            margin: 0 auto; /* Centralizar horizontalmente */
+        }
+        label {
+            text-align: left; /* Alinhar texto à esquerda */
+            display: block; /* Exibir em bloco para espaçamento */
+            margin-bottom: 5px; /* Espaçamento inferior */
+            color: #333; /* Cor do texto */
+        }
+        input[type="text"] {
+            width: 100%; /* Largura total */
+            margin-bottom: 10px; /* Espaçamento inferior */
+            padding: 8px; /* Espaçamento interno */
+            border-radius: 5px; /* Borda arredondada */
+            border: 1px solid #ccc; /* Borda cinza */
+            box-sizing: border-box; /* Caixa de conteúdo inclui borda */
+        }
+        button[type="submit"] {
+            background-color: #2196F3; /* Cor de fundo do botão */
+            color: #fff; /* Cor do texto no botão */
+            padding: 10px 0; /* Espaçamento interno */
+            border-radius: 5px; /* Borda arredondada */
+            border: none; /* Sem borda */
+            cursor: pointer; /* Cursor ao passar o mouse */
+            transition: background-color 0.3s ease; /* Transição suave */
+            display: block; /* Exibir em bloco para centralizar texto */
+            margin: 0 auto; /* Centralizar horizontalmente */
+            width: 100%; /* Largura total */
+        }
+        button[type="submit"]:hover {
+            background-color: #0D47A1; /* Cor de fundo ao passar o mouse */
+        }
+    </style>
 </head>
 <body>
-
-<h1>Registro de ocorrência</h1>
-<form method="post" th:action="@{/ocorrencia}">
-    <input type="hidden" name="cidadaoId" value="${cidadaoId}"/> <!-- Removido o prefixo "th:" do atributo "name" -->
-    Data: <input type="text" th:value="${dataHora}" name="dataHora"/>
-    Localização: <input type="text" th:value="${localizacao}" name="localizacao"/>
-    Descrição: <input type="text" th:value="${descricao}" name="descricao"/>
-    Fotos: <input type="text" th:value="${fotos}" name="fotos"/>
-    Situação: <input type="text" th:value="${situacao}" name="situacao"/>
-    
-    <!-- Campos do Veículo -->
-    Placa: <input type="text" name="placa" required/> <!-- Corrigido para incluir o parâmetro "placa" -->
-    Modelo: <input type="text" name="modelo" required/>
-    Marca: <input type="text" name="marca" required/>
-    Renavam: <input type="text" name="renavam" required/>
-
-    <button type="submit">Salvar</button>
-</form>
-
+    <div class="container">
+        <h1>Registro de ocorrência</h1>
+        <div class="form-container">
+            <form method="post" th:action="@{/ocorrencia}">
+                <div>
+                    <label for="dataHora">Data:</label>
+                    <input type="text" th:value="${dataHora}" name="dataHora"/>
+                </div>
+                <div>
+                    <label for="localizacao">Localização:</label>
+                    <input type="text" th:value="${localizacao}" name="localizacao"/>
+                </div>
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" th:value="${descricao}" name="descricao"/>
+                </div>
+                <div>
+                    <label for="fotos">Fotos:</label>
+                    <input type="text" th:value="${fotos}" name="fotos"/>
+                </div>
+                <div>
+                    <label for="situacao">Situação:</label>
+                    <input type="text" th:value="${situacao}" name="situacao"/>
+                </div>
+                <!-- Campos do Veículo -->
+                <div>
+                    <label for="placa">Placa:</label>
+                    <input type="text" name="placa" required/>
+                </div>
+                <div>
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" name="modelo" required/>
+                </div>
+                <div>
+                    <label for="marca">Marca:</label>
+                    <input type="text" name="marca" required/>
+                </div>
+                <div>
+                    <label for="renavam">Renavam:</label>
+                    <input type="text" name="renavam" required/>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
