@@ -44,15 +44,14 @@
             box-sizing: border-box; /* Caixa de conteúdo inclui borda */
         }
         button[type="submit"] {
-            background-color: #2196F3; /* Cor de fundo do botão */
+           background-color: #2196F3; /* Cor de fundo do botão */
             color: #fff; /* Cor do texto no botão */
-            padding: 10px 20px; /* Espaçamento interno */
             border-radius: 5px; /* Borda arredondada */
             border: none; /* Sem borda */
             cursor: pointer; /* Cursor ao passar o mouse */
             transition: background-color 0.3s ease; /* Transição suave */
+            display: block; /* Exibir em bloco para centralizar texto */ 
             width: 100%; /* Largura total */
-            text-align: center; /* Centralizar texto dentro do botão */
         }
         button[type="submit"]:hover {
             background-color: #0D47A1; /* Cor de fundo ao passar o mouse */
@@ -72,7 +71,7 @@
                     <label for="senha">Senha:</label>
                     <input type="password" id="senha" name="senha" required />
                 </div>
-                <button type="submit" class="waves-effect waves-light btn" style="padding: 10px 50px;">Login</button>
+                <button type="submit" class="waves-effect waves-light btn">Login</button>
             </form>
         </div>
     </div>

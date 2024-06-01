@@ -41,4 +41,20 @@ public class OcorrenciaController {
 		return "redirect:/ocorrencia";
 	}
     
+    @RequestMapping(value = "/parteenvolvida", method = RequestMethod.GET)
+    public String showParteEnvolvidaForm(Model model) {
+        model.addAttribute("parteenvolvida", new Ocorrencia());
+        return "appRegistroAcidente/parteenvolvida";
+    }
+
+    @RequestMapping(value = "/parteenvolvida", method = RequestMethod.POST)
+    public String saveParteEnvolvida(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo) {	
+		cidadaoRepository.save(cidadao);
+		veiculoRepository.save(veiculo);
+	    ocorrencia.setCidadao(cidadao);
+	    ocorrencia.setVeiculo(veiculo);
+	    ocorrenciaRepository.save(ocorrencia);
+		return "redirect:/parteenvolvida";
+	}
+    
 }

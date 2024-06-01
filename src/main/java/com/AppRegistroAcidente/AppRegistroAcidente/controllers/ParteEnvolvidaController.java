@@ -1,4 +1,4 @@
-package com.AppRegistroAcidente.AppRegistroAcidente.controllers;
+/*package com.AppRegistroAcidente.AppRegistroAcidente.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,3 +69,4 @@ public class ParteEnvolvidaController {
         return "redirect:/parteenvolvida";
     }
 }
+*/

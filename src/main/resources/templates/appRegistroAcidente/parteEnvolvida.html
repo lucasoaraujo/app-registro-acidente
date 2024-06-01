@@ -63,24 +63,41 @@
             <form method="post" th:action="@{/parteenvolvida}">
                 <input type="hidden" name="cidadaoId" th:value="${cidadaoId}"/>
                 <div>
-                    <label for="tipoParticipacao">Tipo de Participação:</label>
-                    <input type="text" id="tipoParticipacao" name="tipoParticipacao" required/>
+                    <label for="dataHora">Data:</label>
+                    <input type="text" th:value="${dataHora}" name="dataHora"/>
                 </div>
                 <div>
+                    <label for="localizacao">Localização:</label>
+                    <input type="text" th:value="${localizacao}" name="localizacao"/>
+                </div>
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" th:value="${descricao}" name="descricao"/>
+                </div>
+                <div>
+                    <label for="fotos">Fotos:</label>
+                    <input type="text" th:value="${fotos}" name="fotos"/>
+                </div>
+                <div>
+                    <label for="situacao">Situação:</label>
+                    <input type="text" th:value="${situacao}" name="situacao"/>
+                </div>
+                <!-- Campos do Veículo -->
+                <div>
                     <label for="placa">Placa:</label>
-                    <input type="text" id="placa" name="veiculo.placa" required/>
+                    <input type="text" name="placa" required/>
                 </div>
                 <div>
                     <label for="modelo">Modelo:</label>
-                    <input type="text" id="modelo" name="veiculo.modelo" required/>
+                    <input type="text" name="modelo" required/>
                 </div>
                 <div>
                     <label for="marca">Marca:</label>
-                    <input type="text" id="marca" name="veiculo.marca" required/>
+                    <input type="text" name="marca" required/>
                 </div>
                 <div>
                     <label for="renavam">Renavam:</label>
-                    <input type="text" id="renavam" name="veiculo.renavam" required/>
+                    <input type="text" name="renavam" required/>
                 </div>
                 <button type="submit" class="waves-effect waves-light btn">Salvar</button>
             </form>

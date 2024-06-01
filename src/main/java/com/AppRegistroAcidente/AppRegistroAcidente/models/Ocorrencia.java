@@ -43,9 +43,6 @@ public class Ocorrencia {
     @Size(max = 15)
     private String situacao;
     
-    @OneToMany(mappedBy = "ocorrencia")
-    private List<ParteEnvolvida> partesEnvolvidas;
-    
     @OneToOne
     @JoinColumn(name = "cidadao_id")
     private Cidadao cidadao;
@@ -101,13 +98,8 @@ public class Ocorrencia {
         this.situacao = situacao;
     }
 
-    public List<ParteEnvolvida> getPartesEnvolvidas() {
-        return partesEnvolvidas;
-    }
+ 
 
-    public void setPartesEnvolvidas(List<ParteEnvolvida> partesEnvolvidas) {
-        this.partesEnvolvidas = partesEnvolvidas;
-    }
 
     public Cidadao getCidadao() {
         return cidadao;
