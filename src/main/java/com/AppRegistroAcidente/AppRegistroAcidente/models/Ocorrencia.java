@@ -37,11 +37,7 @@ public class Ocorrencia {
     
     @NotNull
     @Lob
-    private String fotos;
-    
-    @NotNull
-    @Size(max = 15)
-    private String situacao;
+    private byte[] fotos;  // Alteração aqui
     
     @OneToOne
     @JoinColumn(name = "cidadao_id")
@@ -49,6 +45,8 @@ public class Ocorrencia {
     
     @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL)
     private List<Veiculo> veiculos;
+
+    // Getters e setters
 
     public Long getId() {
         return id;
@@ -82,24 +80,13 @@ public class Ocorrencia {
         this.descricao = descricao;
     }
 
-    public String getFotos() {
+    public byte[] getFotos() {
         return fotos;
     }
 
-    public void setFotos(String fotos) {
+    public void setFotos(byte[] fotos) {
         this.fotos = fotos;
     }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
- 
-
 
     public Cidadao getCidadao() {
         return cidadao;
@@ -120,8 +107,7 @@ public class Ocorrencia {
         this.veiculos = veiculos;
     }
 
-	public void setVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setVeiculo(Veiculo veiculo) {
+        // Método implementado
+    }
 }

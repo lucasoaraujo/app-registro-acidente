@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.AppRegistroAcidente.AppRegistroAcidente.models.Cidadao;
 import com.AppRegistroAcidente.AppRegistroAcidente.models.Ocorrencia;
@@ -32,14 +34,22 @@ public class OcorrenciaController {
     }
     
     @RequestMapping(value="/ocorrencia", method=RequestMethod.POST)
-	public String form(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo) {	
-		cidadaoRepository.save(cidadao);
-		veiculoRepository.save(veiculo);
-	    ocorrencia.setCidadao(cidadao);
-	    ocorrencia.setVeiculo(veiculo);
-	    ocorrenciaRepository.save(ocorrencia);
-		return "redirect:/ocorrencia";
-	}
+    public String form(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo, @RequestParam("file") MultipartFile file) {
+        try {
+            if (!file.isEmpty()) {
+                byte[] bytes = file.getBytes();
+                ocorrencia.setFotos(bytes);
+            }
+            cidadaoRepository.save(cidadao);
+            veiculoRepository.save(veiculo);
+            ocorrencia.setCidadao(cidadao);
+            ocorrencia.setVeiculo(veiculo);
+            ocorrenciaRepository.save(ocorrencia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/ocorrencia";
+    }
     
     @RequestMapping(value = "/parteenvolvida", method = RequestMethod.GET)
     public String showParteEnvolvidaForm(Model model) {
@@ -48,13 +58,20 @@ public class OcorrenciaController {
     }
 
     @RequestMapping(value = "/parteenvolvida", method = RequestMethod.POST)
-    public String saveParteEnvolvida(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo) {	
-		cidadaoRepository.save(cidadao);
-		veiculoRepository.save(veiculo);
-	    ocorrencia.setCidadao(cidadao);
-	    ocorrencia.setVeiculo(veiculo);
-	    ocorrenciaRepository.save(ocorrencia);
-		return "redirect:/parteenvolvida";
-	}
-    
+    public String saveParteEnvolvida(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo, @RequestParam("file") MultipartFile file) {  
+        try {
+            if (!file.isEmpty()) {
+                byte[] bytes = file.getBytes();
+                ocorrencia.setFotos(bytes);
+            }
+            cidadaoRepository.save(cidadao);
+            veiculoRepository.save(veiculo);
+            ocorrencia.setCidadao(cidadao);
+            ocorrencia.setVeiculo(veiculo);
+            ocorrenciaRepository.save(ocorrencia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/parteenvolvida";
+    }
 }

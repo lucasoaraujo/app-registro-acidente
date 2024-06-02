@@ -5,6 +5,7 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection"/>
     <!-- Custom CSS -->
+    <!-- Custom CSS -->
     <style>
         body {
             background-color: #f0f0f0; /* Cor de fundo para a página */
@@ -31,7 +32,7 @@
             margin-bottom: 5px; /* Espaçamento inferior */
             color: #333; /* Cor do texto */
         }
-        input[type="text"] {
+        input[type="text"], input[type="file"] {
             width: 100%; /* Largura total */
             margin-bottom: 10px; /* Espaçamento inferior */
             padding: 8px; /* Espaçamento interno */
@@ -40,15 +41,13 @@
             box-sizing: border-box; /* Caixa de conteúdo inclui borda */
         }
         button[type="submit"] {
-            background-color: #2196F3; /* Cor de fundo do botão */
+           background-color: #2196F3; /* Cor de fundo do botão */
             color: #fff; /* Cor do texto no botão */
-            padding: 10px 0; /* Espaçamento interno */
             border-radius: 5px; /* Borda arredondada */
             border: none; /* Sem borda */
             cursor: pointer; /* Cursor ao passar o mouse */
             transition: background-color 0.3s ease; /* Transição suave */
-            display: block; /* Exibir em bloco para centralizar texto */
-            margin: 0 auto; /* Centralizar horizontalmente */
+            display: block; /* Exibir em bloco para centralizar texto */ 
             width: 100%; /* Largura total */
         }
         button[type="submit"]:hover {
@@ -76,11 +75,7 @@
                 </div>
                 <div>
                     <label for="fotos">Fotos:</label>
-                    <input type="text" th:value="${fotos}" name="fotos"/>
-                </div>
-                <div>
-                    <label for="situacao">Situação:</label>
-                    <input type="text" th:value="${situacao}" name="situacao"/>
+                    <input type="file" name="fotos" multiple/>
                 </div>
                 <!-- Campos do Veículo -->
                 <div>
