@@ -18,6 +18,7 @@ import com.AppRegistroAcidente.AppRegistroAcidente.models.ContaGov;
 import com.AppRegistroAcidente.AppRegistroAcidente.repository.CidadaoRepository;
 import com.AppRegistroAcidente.AppRegistroAcidente.repository.ContaGovRepository;
 
+//7.6. CT006 – Redirecionamento após cadastro
 // Este teste verifica se o redirecionamento após o cadastro de um cidadão está funcionando corretamente, simulando uma requisição 
 // POST e verificando se a URL redirecionada é a esperada.
 @WebMvcTest(CidadaoController.class)

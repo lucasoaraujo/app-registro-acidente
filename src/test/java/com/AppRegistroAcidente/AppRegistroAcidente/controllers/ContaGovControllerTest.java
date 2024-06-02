@@ -22,6 +22,7 @@ public class ContaGovControllerTest {
     @MockBean
     private ContaGovRepository contaGovRepository;
     
+    // 7.8. CT008 – Redirecionamento após login 
     // este teste verifica se o método `processLogin` do controlador funciona corretamente quando um usuário válido é fornecido, 
     // redirecionando-o para a página de seleção (`/selecao`).
 
