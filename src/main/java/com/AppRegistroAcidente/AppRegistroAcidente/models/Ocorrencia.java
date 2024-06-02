@@ -35,9 +35,9 @@ public class Ocorrencia {
     @Lob
     private String descricao;
     
-    @NotNull
+    /*@NotNull
     @Lob
-    private byte[] fotos;  // Alteração aqui
+    private byte[] fotos;  // Alteração aqui*/
     
     @OneToOne
     @JoinColumn(name = "cidadao_id")
@@ -80,13 +80,13 @@ public class Ocorrencia {
         this.descricao = descricao;
     }
 
-    public byte[] getFotos() {
+    /*public byte[] getFotos() {
         return fotos;
     }
 
     public void setFotos(byte[] fotos) {
         this.fotos = fotos;
-    }
+    }*/
 
     public Cidadao getCidadao() {
         return cidadao;

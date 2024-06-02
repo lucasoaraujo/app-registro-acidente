@@ -34,20 +34,12 @@ public class OcorrenciaController {
     }
     
     @RequestMapping(value="/ocorrencia", method=RequestMethod.POST)
-    public String form(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo, @RequestParam("file") MultipartFile file) {
-        try {
-            if (!file.isEmpty()) {
-                byte[] bytes = file.getBytes();
-                ocorrencia.setFotos(bytes);
-            }
+    public String form(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo) {
             cidadaoRepository.save(cidadao);
             veiculoRepository.save(veiculo);
             ocorrencia.setCidadao(cidadao);
             ocorrencia.setVeiculo(veiculo);
             ocorrenciaRepository.save(ocorrencia);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return "redirect:/ocorrencia";
     }
     
@@ -58,20 +50,13 @@ public class OcorrenciaController {
     }
 
     @RequestMapping(value = "/parteenvolvida", method = RequestMethod.POST)
-    public String saveParteEnvolvida(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo, @RequestParam("file") MultipartFile file) {  
-        try {
-            if (!file.isEmpty()) {
-                byte[] bytes = file.getBytes();
-                ocorrencia.setFotos(bytes);
-            }
+    public String saveParteEnvolvida(Ocorrencia ocorrencia, Cidadao cidadao, Veiculo veiculo) {  
             cidadaoRepository.save(cidadao);
             veiculoRepository.save(veiculo);
             ocorrencia.setCidadao(cidadao);
             ocorrencia.setVeiculo(veiculo);
             ocorrenciaRepository.save(ocorrencia);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+  
         return "redirect:/parteenvolvida";
     }
 }
