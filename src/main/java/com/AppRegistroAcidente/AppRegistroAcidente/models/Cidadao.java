@@ -1,9 +1,8 @@
 package com.AppRegistroAcidente.AppRegistroAcidente.models;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.validation.constraints.NotNull;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
@@ -38,12 +37,14 @@ public class Cidadao implements Serializable {
     @Size(max = 50)
     private String email;
 
-    @OneToOne(mappedBy = "cidadao")
-    private Ocorrencia ocorrencia;
+    @OneToMany(mappedBy = "cidadao", cascade = CascadeType.ALL)
+    private List<Ocorrencia> ocorrencias;
 
     @OneToOne
     @JoinColumn(name = "conta_gov_id")
     private ContaGov contaGov;
+
+    // Getters e setters
 
     public Long getId() {
         return id;
@@ -101,11 +102,11 @@ public class Cidadao implements Serializable {
         this.contaGov = contaGov;
     }
 
-    public Ocorrencia getOcorrencia() {
-        return ocorrencia;
+    public List<Ocorrencia> getOcorrencias() {
+        return ocorrencias;
     }
 
-    public void setOcorrencia(Ocorrencia ocorrencia) {
-        this.ocorrencia = ocorrencia;
+    public void setOcorrencias(List<Ocorrencia> ocorrencias) {
+        this.ocorrencias = ocorrencias;
     }
 }
